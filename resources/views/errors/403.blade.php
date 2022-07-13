@@ -16,7 +16,7 @@
 		<div class="main-error-wrapper bg-white  page page-h ">
 			<img src="{{URL::asset('assets/img/media/access_denied.png')}}" class="error-page" alt="error">
 			<h2>access denied</h2>
-			<h6>403</h6><a class="btn btn-outline-danger" href="{{ route('invoices.index') }}">Back to Home</a>
+			<h6>403</h6><a class="btn btn-outline-danger" href="{{ route('home') }}">Back to Home</a>
 		</div>
 		<!-- /Main-error-wrapper -->
 @endsection

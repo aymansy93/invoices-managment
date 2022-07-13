@@ -19,33 +19,38 @@ use App\Http\Controllers\invoicesArchive;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+   return redirect('/home');
 });
 
 Auth::routes();
-
-Route::resource('invoices', InvoicesController::class)->middleware('auth');
-Route::resource('sections', SectionsController::class)->middleware('auth');
-Route::resource('products', ProductsController::class)->middleware('auth');
-Route::resource('archive', invoicesArchive::class)->middleware('auth');
-Route::resource('attachments', InvoiceAttachmentsController::class)->middleware('auth');
-Route::get('print-invoice/{id}','App\Http\Controllers\InvoicesController@print')->name('print.invoices')->middleware('auth');
-
-Route::get('section/{id}','App\Http\Controllers\InvoicesController@getproducts')->name('getproducts')->middleware('auth');
-// invoices padding
-Route::get('invoices-paid/{id}','App\Http\Controllers\InvoicesController@paidding')->name('paidding')->middleware('auth');
 //
-Route::get('invoicesdetalis/{id}','App\Http\Controllers\InvoicesDetailsController@edit')->name('invoicesdetalis')->middleware('auth');
-Route::get('viewfile/{invoices_numper}/{file_name}','App\Http\Controllers\InvoicesDetailsController@openfile')->name('openfile')->middleware('auth');
-Route::get('download/{invoices_numper}/{file_name}','App\Http\Controllers\InvoicesDetailsController@download')->name('download')->middleware('auth');
-Route::delete('delete-file','App\Http\Controllers\InvoicesDetailsController@destroy')->name('delete.file')->middleware('auth');
-Route::put('invoices/{id}/statusupdate/','App\Http\Controllers\InvoicesController@status_update')->name('status_update')->middleware('auth');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','App\Http\Controllers\RoleController');
     Route::resource('users','App\Http\Controllers\UserController');
+    Route::resource('invoices', InvoicesController::class);
+    Route::resource('sections', SectionsController::class);
+    Route::resource('products', ProductsController::class);
+    Route::resource('archive', invoicesArchive::class);
+    Route::resource('attachments', InvoiceAttachmentsController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('print-invoice/{id}','App\Http\Controllers\InvoicesController@print')->name('print.invoices');
+
+    Route::get('section/{id}','App\Http\Controllers\InvoicesController@getproducts')->name('getproducts');
+// invoices padding
+    Route::get('invoices-paid/{id}','App\Http\Controllers\InvoicesController@paidding')->name('paidding');
+//
+    Route::post('customer-reports','App\Http\Controllers\CustomerReport@search_invoices')->name('customer.search');
+    Route::get('customer-reports','App\Http\Controllers\CustomerReport@index')->name('customer.report');
+    Route::post('reports','App\Http\Controllers\invoicesreports@search_invoices')->name('report.search');
+    Route::get('reports','App\Http\Controllers\invoicesreports@index')->name('report');
+    Route::get('invoicesdetalis/{id}','App\Http\Controllers\InvoicesDetailsController@edit')->name('invoicesdetalis');
+    Route::get('viewfile/{invoices_numper}/{file_name}','App\Http\Controllers\InvoicesDetailsController@openfile')->name('openfile');
+    Route::get('download/{invoices_numper}/{file_name}','App\Http\Controllers\InvoicesDetailsController@download')->name('download');
+    Route::delete('delete-file','App\Http\Controllers\InvoicesDetailsController@destroy')->name('delete.file');
+    Route::put('invoices/{id}/statusupdate/','App\Http\Controllers\InvoicesController@status_update')->name('status_update');
     });
 
 
-Route::get('/{page}', 'App\Http\Controllers\AdminController@index')->middleware('auth');
+// Route::get('/{page}', 'App\Http\Controllers\AdminController@index')->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

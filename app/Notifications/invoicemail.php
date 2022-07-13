@@ -6,6 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\invoices;
+use Auth;
 
 class invoicemail extends Notification
 {
@@ -21,6 +23,7 @@ class invoicemail extends Notification
     {
         //
         $this->invoice_id = $invoice_id;
+
     }
 
     /**
@@ -31,7 +34,8 @@ class invoicemail extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
+
     }
 
     /**
@@ -40,6 +44,7 @@ class invoicemail extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+
     public function toMail($notifiable)
     {
         $url = "http://127.0.0.1:8000/invoicesdetalis/".$this->invoice_id;
@@ -48,6 +53,15 @@ class invoicemail extends Notification
                     ->line('تمت اضافة فاتورة جديدة')
                     ->action('عرض الفاتورة', $url)
                     ->line('شكرا لاستخدامكم منصة الفواتير الالكترونية');
+    }
+    public function toDatabase($notifiable)
+    {
+        return [
+            'id' => $this->invoice_id,
+            'title'=> 'تم اضافة فاتورة جديدة بواسطة ',
+            'user'=> Auth::user()->name,
+
+        ];
     }
 
     /**
