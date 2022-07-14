@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Notifications\DatabaseNotification;
 use App\Models\invoices;
 
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -18,6 +20,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    function __construct()
+    {
+        $this->middleware('permission:الاشعارات', ['only' => ['markAsread_all,markAsread']]);
+    }
     public function index()
     {
 
@@ -68,5 +74,20 @@ class HomeController extends Controller
             ->options([]);
 
             return view('home',compact('chartjs','chartjs_2'));
+    }
+    //  notifications
+    public function markAsread_all(){
+        $notf = auth()->user()->unreadNotifications;
+        if($notf){
+            $notf->markAsRead();
+            return back();
+        }
+    }
+    public function markAsread($id){
+        // $a= DatabaseNotification::where("data['id']",$id)->first();
+        $id_not = DB::table('notifications')->where('data->id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$id_not)->update(['read_at'=>now()]);
+
+        return redirect("/invoicesdetalis/$id");
     }
 }

@@ -34,7 +34,8 @@ class invoicemail extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['database'];
+        // return ['mail'];
 
     }
 
@@ -45,15 +46,16 @@ class invoicemail extends Notification
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
 
-    public function toMail($notifiable)
-    {
-        $url = "http://127.0.0.1:8000/invoicesdetalis/".$this->invoice_id;
-        return (new MailMessage)
-                    ->subject('اضافة فاتورة جديدة')
-                    ->line('تمت اضافة فاتورة جديدة')
-                    ->action('عرض الفاتورة', $url)
-                    ->line('شكرا لاستخدامكم منصة الفواتير الالكترونية');
-    }
+    // public function toMail($notifiable)
+    // {
+    //     $url = "http://127.0.0.1:8000/invoicesdetalis/".$this->invoice_id;
+    //     return (new MailMessage)
+    //                 ->subject('اضافة فاتورة جديدة')
+    //                 ->line('تمت اضافة فاتورة جديدة')
+    //                 ->action('عرض الفاتورة', $url)
+    //                 ->line('شكرا لاستخدامكم منصة الفواتير الالكترونية');
+    // }
+
     public function toDatabase($notifiable)
     {
         return [

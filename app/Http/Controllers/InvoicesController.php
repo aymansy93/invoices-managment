@@ -153,7 +153,8 @@ class InvoicesController extends Controller
         }
 
         // send email to user
-        $user = Auth::user();
+        // $user = Auth::user();
+        $user = User::get();
         Notification::send($user, new invoicemail($invoice_id));
 
         return redirect()->back()->with('Add','تمت اضافة الفاتورة بنجاح');
