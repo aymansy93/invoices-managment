@@ -29,6 +29,7 @@ class invoices extends Model
         'note',
         'Payment_Date',
         'user',
+        'user_id',
     ];
 
 

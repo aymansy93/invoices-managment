@@ -116,6 +116,7 @@ class InvoicesController extends Controller
             'value_status' => '2',
             'note' => $request->note,
             'user' => Auth::user()->name,
+            'user_id'=>Auth::user()->id,
 
         ]);
 
@@ -242,6 +243,7 @@ class InvoicesController extends Controller
             'value_status' => '2',
             'note' => $request->note,
             'user' => Auth::user()->name,
+            'user_id'=>Auth::user()->id,
         ]);
 
         return redirect()->back()->with('edit','تم تعديل الفاتورة بنجاح');
@@ -299,6 +301,7 @@ class InvoicesController extends Controller
                 'value_status' => '1',
                 'Payment_Date'=> $request->payment_date,
                 'user' => Auth::user()->name,
+                'user_id'=>Auth::user()->id,
             ]);
             invoices_details::create([
                 'invoice_id' => $id,
@@ -318,6 +321,7 @@ class InvoicesController extends Controller
                 'value_status' => '3',
                 'Payment_Date'=> $request->payment_date,
                 'user' => Auth::user()->name,
+                'user_id'=>Auth::user()->id,
             ]);
             invoices_details::create([
                 'invoice_id' => $id,

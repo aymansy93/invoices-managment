@@ -31,10 +31,10 @@
     $invoices_sum_2 = number_format(App\Models\invoices::where('value_status', 2)->sum('total'), 2);
     $invoices_sum_3 = number_format(App\Models\invoices::where('value_status', 3)->sum('total'), 2);
 
-    $n = ($invoices_count / $invoices_count) * 100;
-    $n_1 = round(($invoices_count_1 / $invoices_count) * 100,0);
-    $n_2 = round(($invoices_count_2 / $invoices_count) * 100,0);
-    $n_3 = round(($invoices_count_3 / $invoices_count) * 100,0);
+    $n = $invoices_count == 0 ? 0 : ($invoices_count / $invoices_count) * 100;
+    $n_1 = $invoices_count == 0 ? 0 : round(($invoices_count_1 / $invoices_count) * 100,0);
+    $n_2 = $invoices_count == 0 ? 0 : round(($invoices_count_2 / $invoices_count) * 100,0);
+    $n_3 = $invoices_count == 0 ? 0 : round(($invoices_count_3 / $invoices_count) * 100,0);
 
     @endphp
     <!-- row -->

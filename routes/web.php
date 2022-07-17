@@ -25,6 +25,11 @@ Route::get('/', function () {
 Auth::routes();
 //
 Route::group(['middleware' => ['auth']], function() {
+    // profil route
+    Route::post('profil/setimg',[App\Http\Controllers\ProfilController::class,'set_img'])->name('profil.set_img');
+    Route::post('profil/store',[App\Http\Controllers\ProfilController::class,'store'])->name('profil.setting');
+    Route::get('profil',[App\Http\Controllers\ProfilController::class,'index'])->name('profil');
+
     Route::resource('roles','App\Http\Controllers\RoleController');
     Route::resource('users','App\Http\Controllers\UserController');
     Route::resource('invoices', InvoicesController::class);
@@ -35,7 +40,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('markAsread_all/{id}', [App\Http\Controllers\HomeController::class, 'markAsread'])->name('markAsread');
     Route::post('/markAsread_all', [App\Http\Controllers\HomeController::class, 'markAsread_all'])->name('markAsread_all');
-
 
     Route::get('print-invoice/{id}','App\Http\Controllers\InvoicesController@print')->name('print.invoices');
 

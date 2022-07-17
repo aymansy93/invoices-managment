@@ -26,14 +26,13 @@ class HomeController extends Controller
     }
     public function index()
     {
-
         $invoices_count = invoices::count();
         $invoices_count_1 =  invoices::where('value_status',1)->count();
         $invoices_count_2 =  invoices::where('value_status',2)->count();
         $invoices_count_3 =  invoices::where('value_status',3)->count();
-        $n_1 = round($invoices_count_1 / $invoices_count * 100,0);
-        $n_2 = round($invoices_count_2 / $invoices_count * 100,0);
-        $n_3 = round($invoices_count_3 / $invoices_count * 100,0);
+        $n_1 = $invoices_count == 0 ? 0 : round($invoices_count_1 / $invoices_count * 100,0);
+        $n_2 = $invoices_count == 0 ? 0 : round($invoices_count_2 / $invoices_count * 100,0);
+        $n_3 = $invoices_count == 0 ? 0 : round($invoices_count_3 / $invoices_count * 100,0);
 
             $chartjs = app()->chartjs
             ->name('barChartTest')

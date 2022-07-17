@@ -22,7 +22,9 @@
             </div>
         </div>
         <div class="main-header-right">
-            <ul class="nav">
+            {{-- this is code languash --}}
+
+            {{-- <ul class="nav">
                 <li class="">
                     <div class="dropdown  nav-itemd-none d-md-flex">
                         <a href="#" class="d-flex  nav-item nav-link pl-0 country-flag1" data-toggle="dropdown"
@@ -34,38 +36,6 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow" x-placement="bottom-end">
-                            <a href="#" class="dropdown-item d-flex ">
-                                <span class="avatar  ml-3 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('assets/img/flags/french_flag.jpg') }}"
-                                        alt="img"></span>
-                                <div class="d-flex">
-                                    <span class="mt-2">French</span>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item d-flex">
-                                <span class="avatar  ml-3 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('assets/img/flags/germany_flag.jpg') }}"
-                                        alt="img"></span>
-                                <div class="d-flex">
-                                    <span class="mt-2">Germany</span>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item d-flex">
-                                <span class="avatar ml-3 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('assets/img/flags/italy_flag.jpg') }}"
-                                        alt="img"></span>
-                                <div class="d-flex">
-                                    <span class="mt-2">Italy</span>
-                                </div>
-                            </a>
-                            <a href="#" class="dropdown-item d-flex">
-                                <span class="avatar ml-3 align-self-center bg-transparent"><img
-                                        src="{{ URL::asset('assets/img/flags/russia_flag.jpg') }}"
-                                        alt="img"></span>
-                                <div class="d-flex">
-                                    <span class="mt-2">Russia</span>
-                                </div>
-                            </a>
                             <a href="#" class="dropdown-item d-flex">
                                 <span class="avatar  ml-3 align-self-center bg-transparent"><img
                                         src="{{ URL::asset('assets/img/flags/spain_flag.jpg') }}"
@@ -77,7 +47,8 @@
                         </div>
                     </div>
                 </li>
-            </ul>
+            </ul> --}}
+            {{-- /////////////////////////////////// --}}
             <div class="nav nav-item  navbar-nav-right ml-auto">
                 <div class="nav-link" id="bs-example-navbar-collapse-1">
                     <form class="navbar-form" role="search">
@@ -100,7 +71,10 @@
                         </div>
                     </form>
                 </div>
-                <div class="dropdown nav-item main-header-message ">
+
+                {{-- this is code messages  --}}
+
+                {{-- <div class="dropdown nav-item main-header-message ">
                     <a class="new nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg"
                             class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -109,6 +83,7 @@
                             </path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg><span class=" pulse-danger"></span></a>
+
                     <div class="dropdown-menu">
                         <div class="menu-header-content bg-primary text-right">
                             <div class="d-flex">
@@ -120,58 +95,7 @@
                                 messages</p>
                         </div>
                         <div class="main-message-list chat-scroll">
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="  drop-img  cover-image  "
-                                    data-image-src="{{ URL::asset('assets/img/faces/3.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Petey Cruiser</h5>
-                                    </div>
-                                    <p class="mb-0 desc">I'm sorry but i'm not sure how to help you with that......</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
-                                </div>
-                            </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="drop-img cover-image"
-                                    data-image-src="{{ URL::asset('assets/img/faces/2.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Jimmy Changa</h5>
-                                    </div>
-                                    <p class="mb-0 desc">All set ! Now, time to get to you now......</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Mar 06 01:12 AM</p>
-                                </div>
-                            </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="drop-img cover-image"
-                                    data-image-src="{{ URL::asset('assets/img/faces/9.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Graham Cracker</h5>
-                                    </div>
-                                    <p class="mb-0 desc">Are you ready to pickup your Delivery...</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Feb 25 10:35 AM</p>
-                                </div>
-                            </a>
-                            <a href="#" class="p-3 d-flex border-bottom">
-                                <div class="drop-img cover-image"
-                                    data-image-src="{{ URL::asset('assets/img/faces/12.jpg') }}">
-                                    <span class="avatar-status bg-teal"></span>
-                                </div>
-                                <div class="wd-90p">
-                                    <div class="d-flex">
-                                        <h5 class="mb-1 name">Donatella Nobatti</h5>
-                                    </div>
-                                    <p class="mb-0 desc">Here are some products ...</p>
-                                    <p class="time mb-0 text-left float-right mr-2 mt-2">Feb 12 05:12 PM</p>
-                                </div>
-                            </a>
+
                             <a href="#" class="p-3 d-flex border-bottom">
                                 <div class="drop-img cover-image"
                                     data-image-src="{{ URL::asset('assets/img/faces/5.jpg') }}">
@@ -186,11 +110,12 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="text-center dropdown-footer">
-                            <a href="text-center">VIEW ALL</a>
-                        </div>
+
                     </div>
-                </div>
+                </div> --}}
+
+                {{--  --}}
+
                 @can('الاشعارات')
                     <div class="dropdown nav-item main-header-notification">
                         <a class="new nav-link" href="#">
@@ -248,23 +173,33 @@
                         </svg></a>
                 </div>
                 <div class="dropdown main-profile-menu nav nav-item nav-link">
-                    <a class="profile-user d-flex" href=""><img alt=""
-                            src="{{ URL::asset('assets/img/faces/6.jpg') }}"></a>
+                    <a class="profile-user d-flex" href="">
+                @if ($img)
+                <img alt=""
+                src="{{ url($img) }}">
+                @else
+                <img alt=""
+                src="{{ URL::asset('assets/img/faces/NevaCoin.svg') }}">
+                @endif
+               </a>
                     <div class="dropdown-menu">
                         <div class="main-header-profile bg-primary p-3">
                             <div class="d-flex wd-100p">
-                                <div class="main-img-user"><img alt=""
-                                        src="{{ URL::asset('assets/img/faces/6.jpg') }}" class=""></div>
+                                <div class="main-img-user">
+                                @if ($img)
+                                <img alt="" src="{{url($img)}}">
+                                @else
+                                <img alt="" src=" {{URL::asset('assets/img/faces/NevaCoin.svg')}}">
+                                @endif
+                            </div>
                                 <div class="mr-3 my-auto">
                                     <h6>{{ Auth::user()->name }}</h6><span>{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                         </div>
-                        <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>Profile</a>
-                        <a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
-                        <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
-                        <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
-                        <a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
+                        <a class="dropdown-item" href="{{route('profil')}}"><i class="bx bx-user-circle"></i>Profile</a>
+                        {{-- <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a> --}}
+                        {{-- <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a> --}}
                         <a class="dropdown-item" href=""
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                 class="bx bx-log-out"></i>تسجيل خروج</a>
