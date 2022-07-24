@@ -5,12 +5,13 @@
             <div class="responsive-logo">
                 <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('assets/img/brand/logo.png') }}"
                         class="logo-1" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('assets/img/brand/logo-white.png') }}"
-                        class="dark-logo-1" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('assets/img/brand/favicon.png') }}"
-                        class="logo-2" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('assets/img/brand/favicon.png') }}"
-                        class="dark-logo-2" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('assets/img/brand/logo-white.png') }}" class="dark-logo-1"
+                        alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('assets/img/brand/favicon.png') }}" class="logo-2" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('assets/img/brand/favicon.png') }}" class="dark-logo-2" alt="logo"></a>
             </div>
             <div class="app-sidebar__toggle" data-toggle="sidebar">
                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
@@ -59,10 +60,9 @@
                                     <i class="fas fa-times"></i>
                                 </button>
                                 <button type="submit" class="btn btn-default nav-link resp-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-search">
                                         <circle cx="11" cy="11" r="8"></circle>
                                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                     </svg>
@@ -72,7 +72,7 @@
                     </form>
                 </div>
 
-                {{-- this is code messages  --}}
+                {{-- this is code messages --}}
 
                 {{-- <div class="dropdown nav-item main-header-message ">
                     <a class="new nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg"
@@ -130,26 +130,37 @@
                                 <div class="d-flex">
                                     <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">الأشعارات</h6>
                                     {{-- <span class="badge badge-pill badge-warning mr-auto my-auto float-left"> --}}
-                                    <form  action="{{route('markAsread_all')}}" method="post">
+                                    <form action="{{ route('markAsread_all') }}" method="post">
                                         @csrf
-                                        <button class="badge badge-pill badge-warning mr-auto my-auto float-left" type="submit">تحديد الكل كمقروءة</button>
+                                        <button class="badge badge-pill badge-warning mr-auto my-auto float-left"
+                                            type="submit">تحديد الكل كمقروءة</button>
                                     </form>
                                     {{-- </span> --}}
                                 </div>
-                                <p class="dropdown-title-text subtext mb-0 badge-warning text-white op-6 pb-0 tx-12" id="">
-                                    عدد الاشعارات الغير مقروءة  :{{Auth::user()->unreadNotifications->count()}}
-                                    </p>
+                                <p class="dropdown-title-text subtext mb-0 badge-warning text-white op-6 pb-0 tx-12"
+                                    id="">
+                                    عدد الاشعارات الغير مقروءة :{{ Auth::user()->unreadNotifications->count() }}
+                                </p>
 
                             </div>
                             <div class="main-notification-list Notification-scroll" id="unread_not">
                                 @foreach (auth()->user()->unreadNotifications as $notification)
-                                    <a class="d-flex p-3 border-bottom" href="{{route('markAsread', ['id' =>$notification->data['id']])}}">
-                                        <div class="notifyimg bg-primary">
-                                            <i class="la la-check-circle text-white"></i>
+                                    <a class="d-flex p-3 border-bottom"
+                                        href="{{ route('markAsread', ['id' => $notification->data['id']]) }}">
+                                        <div class="notifyimg">
+                                            <i class="d-flex wd-100p text-white">
+                                                @if ($notification->data['img'])
+                                                    <img class="rounded-circle" alt="" src="{{ url($notification->data['img']) }}">
+                                                @else
+                                                    <img class="rounded-circle" alt=""
+                                                        src=" {{ URL::asset('assets/img/faces/NevaCoin.svg') }}">
+                                                @endif
+                                            </i>
                                         </div>
                                         <div class="mr-3">
                                             <h5 class="notification-label mb-1">
-                                                {{ $notification->data['title'] }}{{ $notification->data['user'] }}</h5>
+                                                {{ $notification->data['title'] }}{{ $notification->data['user'] }}
+                                            </h5>
                                             <div class="notification-subtext">تم الانشاء
                                                 في:{{ $notification->created_at }}</div>
                                         </div>
@@ -174,30 +185,29 @@
                 </div>
                 <div class="dropdown main-profile-menu nav nav-item nav-link">
                     <a class="profile-user d-flex" href="">
-                @if ($img)
-                <img alt=""
-                src="{{ url($img) }}">
-                @else
-                <img alt=""
-                src="{{ URL::asset('assets/img/faces/NevaCoin.svg') }}">
-                @endif
-               </a>
+                        @if ($img)
+                            <img alt="" src="{{ url($img) }}">
+                        @else
+                            <img alt="" src="{{ URL::asset('assets/img/faces/NevaCoin.svg') }}">
+                        @endif
+                    </a>
                     <div class="dropdown-menu">
                         <div class="main-header-profile bg-primary p-3">
                             <div class="d-flex wd-100p">
                                 <div class="main-img-user">
-                                @if ($img)
-                                <img alt="" src="{{url($img)}}">
-                                @else
-                                <img alt="" src=" {{URL::asset('assets/img/faces/NevaCoin.svg')}}">
-                                @endif
-                            </div>
+                                    @if ($img)
+                                        <img alt="" src="{{ url($img) }}">
+                                    @else
+                                        <img alt="" src=" {{ URL::asset('assets/img/faces/NevaCoin.svg') }}">
+                                    @endif
+                                </div>
                                 <div class="mr-3 my-auto">
                                     <h6>{{ Auth::user()->name }}</h6><span>{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="{{route('profil')}}"><i class="bx bx-user-circle"></i>Profile</a>
+                        <a class="dropdown-item" href="{{ route('profil') }}"><i
+                                class="bx bx-user-circle"></i>Profile</a>
                         {{-- <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a> --}}
                         {{-- <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a> --}}
                         <a class="dropdown-item" href=""

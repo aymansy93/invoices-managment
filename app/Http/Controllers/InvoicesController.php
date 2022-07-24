@@ -9,7 +9,6 @@ use App\Models\invoice_attachments;
 use App\Models\User;
 use App\Models\sections;
 use App\Models\products;
-
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -89,7 +88,7 @@ class InvoicesController extends Controller
             'Due_date' => 'required|max:255',
             'product' =>  'required|max:255',
             'section' =>  'required|max:255',
-            'Amount_collection' =>  'required|max:255',
+            'Amount_collection' =>  'required|integer|digits_between:2,7',
             'Amount_Commission' =>  'required|max:255',
             'Discount' =>  'required|max:255',
             'Rate_VAT' =>  'required|max:255',
@@ -98,6 +97,8 @@ class InvoicesController extends Controller
             'pic' => 'mimes:jpeg,pdf,png,jpg',
 
 
+        ],[
+            'Amount_collection.digits_between' => "the number must not exceed 8 characters",
         ]);
         // dd($request->invoice_Date);
         invoices::create([

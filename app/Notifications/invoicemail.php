@@ -62,7 +62,7 @@ class invoicemail extends Notification
             'id' => $this->invoice_id,
             'title'=> 'تم اضافة فاتورة جديدة بواسطة ',
             'user'=> Auth::user()->name,
-
+            'img' => Auth::user()->profil->image_path,
         ];
     }
 

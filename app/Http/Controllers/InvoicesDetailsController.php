@@ -67,12 +67,16 @@ class InvoicesDetailsController extends Controller
     {
         //
         $invoices = invoices::where('id',$id)->first();
+        if($invoices){
+            $details = invoices_details::where('invoice_id',$id)->get();
 
-        $details = invoices_details::where('invoice_id',$id)->get();
+            $attachments = invoice_attachments::where('invoice_id',$id)->get();
 
-        $attachments = invoice_attachments::where('invoice_id',$id)->get();
+            return view('invoices.invoicesdetails',compact('invoices','details','attachments'));
 
-        return view('invoices.invoicesdetails',compact('invoices','details','attachments'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
