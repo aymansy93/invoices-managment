@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\InvoiceAttachmentsController;
 use App\Http\Controllers\invoicesArchive;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,7 @@ use App\Http\Controllers\invoicesArchive;
 */
 
 Route::get('/', function () {
-   return redirect('/home');
+  return redirect('/home');
 });
 
 Auth::routes();
